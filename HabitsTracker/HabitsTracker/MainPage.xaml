@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:control="clr-namespace:HabitsTracker.CustomView"
+             xmlns:habitstracker="clr-namespace:HabitsTracker"
+             x:DataType="habitstracker:MainPageViewModel"
              BackgroundColor="Black"
+             x:Name="Root"
              x:Class="HabitsTracker.MainPage">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,6 +35,7 @@
                    TextColor="Wheat" />
             <StackLayout>
                 <control:CellDayView Text="1"
+                                     ButtonPress="{Binding SelectADay}"
                                      ImageName="hf.svg" />
                 <control:CellDayView Text="2"
                                      ImageName="hf.svg" />

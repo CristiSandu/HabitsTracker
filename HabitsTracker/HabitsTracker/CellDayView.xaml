@@ -3,9 +3,9 @@
       xmlns="http://xamarin.com/schemas/2014/forms"
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       x:Class="HabitsTracker.CustomView.CellDayView"
-      x:Name="this">
+      >
 
-    <Image Source="{Binding ImageName, Source={x:Reference this}}"
+    <Image Source="{Binding ImageName}"
            BackgroundColor="Transparent"
            HorizontalOptions="Center"
            VerticalOptions="Center"
@@ -17,6 +17,10 @@
            FontAttributes="Bold"
            TextColor="Tan"
            Padding="0"
-           Text="{Binding Text, Source={x:Reference this}}"
+           Text="{Binding Text}"
            FontSize="15" />
+
+    <Button Command="{Binding ButtonPress}" 
+            BackgroundColor="Transparent"
+            />
 </Grid>

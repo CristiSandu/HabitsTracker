@@ -13,6 +13,7 @@ namespace HabitsTracker
         public MainPage()
         {
             InitializeComponent();
+            Content.BindingContext = new MainPageViewModel();
         }
     }
 }
