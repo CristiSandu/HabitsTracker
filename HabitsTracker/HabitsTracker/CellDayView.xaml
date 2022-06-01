@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid BackgroundColor="Transparent"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="HabitsTracker.CustomView.CellDayView"
+      x:Name="this">
+
+    <Image Source="{Binding ImageName, Source={x:Reference this}}"
+           BackgroundColor="Transparent"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           HeightRequest="30"
+           WidthRequest="30" />
+
+    <Label VerticalOptions="Center"
+           HorizontalOptions="Center"
+           FontAttributes="Bold"
+           TextColor="Tan"
+           Padding="0"
+           Text="{Binding Text, Source={x:Reference this}}"
+           FontSize="15" />
+</Grid>

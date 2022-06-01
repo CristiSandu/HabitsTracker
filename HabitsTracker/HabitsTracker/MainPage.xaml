@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:HabitsTracker.CustomView"
+             BackgroundColor="Black"
+             x:Class="HabitsTracker.MainPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+    
+
+
+        <StackLayout Grid.Row="1"
+                     Grid.Column="0">
+            <Label Text="Jan"
+                   TextColor="Wheat" />
+            <StackLayout>
+                <control:CellDayView Text="1"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="2"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="3"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="4"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="5"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="6"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="ho.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="ho.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="ho.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="hf.svg" />
+                <control:CellDayView Text="50"
+                                     ImageName="ho.svg" />
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Grid.Column="1"
+                     Grid.Row="1">
+            <Label Text="Jan"
+                   TextColor="Wheat" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="ho.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="ho.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="ho.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="ho.svg" />
+        </StackLayout>
+        <StackLayout Grid.Column="2"
+                     Grid.Row="1">
+            <Label Text="Jan"
+                   TextColor="Wheat" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="ho.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="ho.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="ho.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="hf.svg" />
+            <control:CellDayView Text="50"
+                                 ImageName="ho.svg" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
