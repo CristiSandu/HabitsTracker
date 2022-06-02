@@ -13,66 +13,69 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView>
-            <Grid x:Name="MainGridList"
-                  Padding="5"
-                  BindableLayout.ItemsSource="{Binding Months}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
+        <ContentView>
 
-                <Label Grid.Row="0"
-                       Grid.ColumnSpan="12"
-                       HorizontalOptions="Center"
-                       FontAttributes="Bold"
-                       FontSize="Medium"
-                       Text="Habits Calendar" />
+            <ScrollView>
+                <Grid x:Name="MainGridList"
+                      Padding="5"
+                      BindableLayout.ItemsSource="{Binding Months}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Grid.Row="1"
-                                     Grid.Column="{Binding Order}">
-                            <Label Text="{Binding Abreviation}"
-                                   HorizontalOptions="Center"
-                                   FontAttributes="Bold"
-                                   FontSize="12"
-                                   TextColor="{StaticResource MainGold}" />
+                    <Label Grid.Row="0"
+                           Grid.ColumnSpan="12"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           Text="Habits Calendar" />
 
-                            <StackLayout x:Name="ListForJan"
-                                         Spacing="2"
-                                         VerticalOptions="Center"
-                                         HorizontalOptions="Center"
-                                         BindableLayout.ItemsSource="{Binding Days}">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <control:CellDayView Text="{Binding Day}"
-                                                             VerticalOptions="Center"
-                                                             HorizontalOptions="Center"
-                                                             Command="{Binding Path=BindingContext.SelectADayCommand, Source={x:Reference MainGridList}}"
-                                                             CommandParameter="{Binding .}"
-                                                             ImageName="{Binding IsSelected, Converter={StaticResource boolToImageString}}" />
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Grid.Row="1"
+                                         Grid.Column="{Binding Order}">
+                                <Label Text="{Binding Abreviation}"
+                                       HorizontalOptions="Center"
+                                       FontAttributes="Bold"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MainGold}" />
+
+                                <StackLayout x:Name="ListForJan"
+                                             Spacing="2"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="Center"
+                                             BindableLayout.ItemsSource="{Binding Days}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <control:CellDayView Text="{Binding Day}"
+                                                                 VerticalOptions="Center"
+                                                                 HorizontalOptions="Center"
+                                                                 Command="{Binding Path=BindingContext.SelectADayCommand, Source={x:Reference MainGridList}}"
+                                                                 CommandParameter="{Binding .}"
+                                                                 ImageName="{Binding IsSelected, Converter={StaticResource boolToImageString}}" />
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </Grid>
-        </ScrollView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </Grid>
+            </ScrollView>
+        </ContentView>
     </ContentPage.Content>
 </ContentPage>

@@ -4,6 +4,7 @@ using HabitsTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -15,15 +16,12 @@ namespace HabitsTracker.ViewModels
         [ObservableProperty]
         List<MonthModel> months = new();
 
+        Services.ILocalDatabaseService _localDataBase;
+
         public MainPageViewModel()
         {
+            _localDataBase = DependencyService.Get<Services.ILocalDatabaseService>();
             GetDays();
-        }
-
-        public void GetDays()
-        {
-            List<MonthModel> month = Helpers.Constants.Months;
-            months = new List<MonthModel>(month);
         }
 
         [ICommand]
@@ -31,17 +29,36 @@ namespace HabitsTracker.ViewModels
         {
             string currentMonth = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Now.Month).Substring(0, 3);
             int currentDay = DateTime.Now.Day;
-
-            if (day.Day != currentDay || currentMonth != day.Month)
-            {
-                await Application.Current.MainPage.DisplayAlert("Wrong Date", $"You can check only curent date {currentDay} {currentMonth}", "Ok");
-                return;
-            }
+ 
 
             var monthIndex = months.FindIndex(x => x.Abreviation == day.Month);
             var dayIndex = months[monthIndex].Days.FindIndex(x => x.Day == day.Day);
 
             months[monthIndex].Days[dayIndex].IsSelected = !day.IsSelected;
+
+            await _localDataBase.UpdateDay(day);
+        }
+
+        public async Task GetDays()
+        {
+            List<MonthModel> month = Helpers.Constants.Months;
+            List<DayModel> savedDays = await _localDataBase.GetAllDaysSaved();
+
+            var result = savedDays.GroupBy(x => x.Month)
+                  .Select(y => new MonthModel
+                  {
+                      Name = y.Key,
+                      Days = y.ToList()
+                  }).ToList();
+
+            month.ForEach(m =>
+            {
+                var index = result.FindIndex(x => x.Name == m.Abreviation);
+                m.Days = result[index].Days;
+            });
+
+
+            Months = new List<MonthModel>(month);
         }
     }
 }

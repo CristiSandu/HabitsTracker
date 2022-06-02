@@ -1,10 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using HabitsTracker.ViewModels;
+using SQLite;
 
 namespace HabitsTracker.Models
 {
     public partial class DayModel : ObservableObject
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         [ObservableProperty]
         private bool isSelected;
 

@@ -24,7 +24,7 @@ namespace HabitsTracker.Helpers
             int days = DateTime.DaysInMonth(DateTime.Now.Year, monthIndex);
             var numberList = Enumerable.Range(1, days).ToList();
 
-            List<DayModel> dayList = new List<DayModel>();
+            List<DayModel> dayList = new();
 
             numberList.ForEach(day =>
             {
@@ -37,6 +37,18 @@ namespace HabitsTracker.Helpers
             });
 
             return dayList;
+        }
+
+
+        public static List<DayModel> GetAllDays()
+        {
+            List<DayModel> daysList = new();
+            Months.ForEach(month =>
+            {
+                daysList.AddRange(month.Days);
+            });
+
+            return daysList;
         }
     }
 }
