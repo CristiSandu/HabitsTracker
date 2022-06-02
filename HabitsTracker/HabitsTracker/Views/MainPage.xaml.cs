@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HabitsTracker.ViewModels;
 using Xamarin.Forms;
 
-namespace HabitsTracker
+namespace HabitsTracker.Views
 {
     public partial class MainPage : ContentPage
     {

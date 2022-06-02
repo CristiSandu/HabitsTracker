@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:control="clr-namespace:HabitsTracker.CustomView"
+             xmlns:control="clr-namespace:HabitsTracker.Views.CustomViews"
              xmlns:convertor="clr-namespace:HabitsTracker.Converters"
              x:Name="Root"
-             x:Class="HabitsTracker.MainPage">
+             x:Class="HabitsTracker.Views.MainPage">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -43,11 +43,9 @@
                        FontSize="Medium"
                        Text="Habits Calendar" />
 
-
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Grid.Row="1"
-                                     
                                      Grid.Column="{Binding Order}">
                             <Label Text="{Binding Abreviation}"
                                    HorizontalOptions="Center"
@@ -69,9 +67,7 @@
                                                              CommandParameter="{Binding .}"
                                                              ImageName="{Binding IsSelected, Converter={StaticResource boolToImageString}}" />
                                     </DataTemplate>
-
                                 </BindableLayout.ItemTemplate>
-
                             </StackLayout>
                         </StackLayout>
                     </DataTemplate>

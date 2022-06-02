@@ -1,6 +1,5 @@
-﻿using System;
+﻿using HabitsTracker.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace HabitsTracker
 {

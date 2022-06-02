@@ -3,18 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 
 namespace HabitsTracker.Helpers
 {
     public static class Constants
     {
-        public static List<MonthModel> Months = Enumerable.Range(1, 12).Select(i => new MonthModel
-        {
-            Name = DateTimeFormatInfo.CurrentInfo.GetMonthName(i),
-            Order = i - 1,
-            Days = PopulateListOfDaysInADay(DateTimeFormatInfo.CurrentInfo.GetMonthName(i), i)
-        }).ToList();
+        public static List<MonthModel> Months = Enumerable
+            .Range(1, 12)
+            .Select(i => 
+            new MonthModel
+            {
+                Name = DateTimeFormatInfo.CurrentInfo.GetMonthName(i),
+                Order = i - 1,
+                Days = PopulateListOfDaysInADay(DateTimeFormatInfo.CurrentInfo.GetMonthName(i), i)
+            }
+            ).ToList();
 
         public static List<DayModel> PopulateListOfDaysInADay(string monthName, int monthIndex)
         {
