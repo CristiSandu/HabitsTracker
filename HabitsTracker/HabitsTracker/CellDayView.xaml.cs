@@ -10,23 +10,29 @@ using Xamarin.Forms.Xaml;
 namespace HabitsTracker.CustomView
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CellDayView : Grid
+    public partial class CellDayView : ContentView
     {
+        public static readonly BindableProperty CommandProperty = BindableProperty.CreateAttached(nameof(Command), typeof(ICommand), typeof(CellDayView), null);
+        public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create("CommandParameter", typeof(object), typeof(CellDayView), null);
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(CellDayView));
         public static readonly BindableProperty ImageNameProperty = BindableProperty.Create(nameof(ImageName), typeof(string), typeof(CellDayView));
-        public static readonly BindableProperty ButtonPressCommand = BindableProperty.Create(nameof(ButtonPress), typeof(ICommand), typeof(CellDayView), null);
 
-
-        public ICommand ButtonPress
+        public ICommand Command
         {
             get
             {
-                return (ICommand)GetValue(ButtonPressCommand);
+                return (ICommand)GetValue(CommandProperty);
             }
             set
             {
-                SetValue(ButtonPressCommand, value);
+                SetValue(CommandProperty, value);
             }
+        }
+
+        public object CommandParameter
+        {
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
         }
 
         public string ImageName
@@ -55,7 +61,7 @@ namespace HabitsTracker.CustomView
         public CellDayView()
         {
             InitializeComponent();
-            BindingContext = this;
+            Content.BindingContext = this;
         }
     }
 }

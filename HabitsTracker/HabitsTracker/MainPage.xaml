@@ -2,146 +2,81 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:control="clr-namespace:HabitsTracker.CustomView"
-             xmlns:habitstracker="clr-namespace:HabitsTracker"
-             x:DataType="habitstracker:MainPageViewModel"
-             BackgroundColor="Black"
+             xmlns:convertor="clr-namespace:HabitsTracker.Converters"
              x:Name="Root"
              x:Class="HabitsTracker.MainPage">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-    
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convertor:BoolToImageNameConverter x:Key="boolToImageString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid x:Name="MainGridList"
+                  Padding="5"
+                  BindableLayout.ItemsSource="{Binding Months}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Grid.ColumnSpan="12"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       Text="Habits Calendar" />
 
 
-        <StackLayout Grid.Row="1"
-                     Grid.Column="0">
-            <Label Text="Jan"
-                   TextColor="Wheat" />
-            <StackLayout>
-                <control:CellDayView Text="1"
-                                     ButtonPress="{Binding SelectADay}"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="2"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="3"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="4"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="5"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="6"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="ho.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="ho.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="ho.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="hf.svg" />
-                <control:CellDayView Text="50"
-                                     ImageName="ho.svg" />
-            </StackLayout>
-        </StackLayout>
-        <StackLayout Grid.Column="1"
-                     Grid.Row="1">
-            <Label Text="Jan"
-                   TextColor="Wheat" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="ho.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="ho.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="ho.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="ho.svg" />
-        </StackLayout>
-        <StackLayout Grid.Column="2"
-                     Grid.Row="1">
-            <Label Text="Jan"
-                   TextColor="Wheat" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="ho.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="ho.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="ho.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="hf.svg" />
-            <control:CellDayView Text="50"
-                                 ImageName="ho.svg" />
-        </StackLayout>
-    </Grid>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Grid.Row="1"
+                                     
+                                     Grid.Column="{Binding Order}">
+                            <Label Text="{Binding Abreviation}"
+                                   HorizontalOptions="Center"
+                                   FontAttributes="Bold"
+                                   FontSize="12"
+                                   TextColor="{StaticResource MainGold}" />
+
+                            <StackLayout x:Name="ListForJan"
+                                         Spacing="2"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="Center"
+                                         BindableLayout.ItemsSource="{Binding Days}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <control:CellDayView Text="{Binding Day}"
+                                                             VerticalOptions="Center"
+                                                             HorizontalOptions="Center"
+                                                             Command="{Binding Path=BindingContext.SelectADay, Source={x:Reference MainGridList}}"
+                                                             CommandParameter="{Binding .}"
+                                                             ImageName="{Binding IsSelected, Converter={StaticResource boolToImageString}}" />
+                                    </DataTemplate>
+
+                                </BindableLayout.ItemTemplate>
+
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

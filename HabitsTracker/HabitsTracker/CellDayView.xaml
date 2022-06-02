@@ -1,26 +1,27 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Grid BackgroundColor="Transparent"
-      xmlns="http://xamarin.com/schemas/2014/forms"
-      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-      x:Class="HabitsTracker.CustomView.CellDayView"
-      >
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitsTracker.CustomView.CellDayView">
+    <ContentView.Content>
+        <Grid BackgroundColor="Transparent">
+            <Image Source="{Binding ImageName}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HeightRequest="35"
+                   WidthRequest="35" />
 
-    <Image Source="{Binding ImageName}"
-           BackgroundColor="Transparent"
-           HorizontalOptions="Center"
-           VerticalOptions="Center"
-           HeightRequest="30"
-           WidthRequest="30" />
+            <Label VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource MainBrown}"
+                   Padding="0"
+                   Text="{Binding Text}"
+                   FontSize="15" />
 
-    <Label VerticalOptions="Center"
-           HorizontalOptions="Center"
-           FontAttributes="Bold"
-           TextColor="Tan"
-           Padding="0"
-           Text="{Binding Text}"
-           FontSize="15" />
-
-    <Button Command="{Binding ButtonPress}" 
-            BackgroundColor="Transparent"
-            />
-</Grid>
+            <Button Command="{Binding Command}"
+                    CommandParameter="{Binding CommandParameter}"
+                    BackgroundColor="Transparent" HeightRequest="30" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>
