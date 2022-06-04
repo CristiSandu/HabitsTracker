@@ -16,6 +16,9 @@ namespace HabitsTracker.ViewModels
         [ObservableProperty]
         List<MonthModel> months = new();
 
+        [ObservableProperty]
+        bool isLoading = false;
+
         Services.ILocalDatabaseService _localDataBase;
 
         public MainPageViewModel()
@@ -41,6 +44,7 @@ namespace HabitsTracker.ViewModels
 
         public async Task GetDays()
         {
+            IsLoading = true;
             List<MonthModel> month = Helpers.Constants.Months;
             List<DayModel> savedDays = await _localDataBase.GetAllDaysSaved();
 
@@ -59,6 +63,7 @@ namespace HabitsTracker.ViewModels
 
 
             Months = new List<MonthModel>(month);
+            IsLoading = false;
         }
     }
 }
