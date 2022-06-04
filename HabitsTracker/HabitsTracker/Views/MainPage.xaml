@@ -12,6 +12,24 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Share Progress"
+                     Order="Secondary"
+                     Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <NavigationPage.TitleView>
+        <StackLayout Padding="0"
+                     Spacing="-5"
+                     >
+            <Label Text="Habits Calendar"
+                   FontSize="Large" />
+            <Label Text="Guitar Plaing"
+                   FontSize="Medium" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+
     <ContentPage.Content>
         <ContentView>
             <ScrollView>
@@ -23,7 +41,7 @@
                                            IsRunning="{Binding IsLoading}" />
                         <Label Text="Calendar Loading ..."
                                FontSize="Large"
-                               FontAttributes="Bold"/>
+                               FontAttributes="Bold" />
                     </StackLayout>
                     <Grid x:Name="MainGridList"
                           Padding="5"
