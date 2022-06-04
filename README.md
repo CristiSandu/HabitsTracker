@@ -2,7 +2,7 @@
 
 Application for tracking training habit in a visual manner.  
 
-![](/HabitsTracker/Images/Picture1.png)
+![](https://github.com/CristiSandu/HabitsTracker/blob/master/Images/Picture1.png)
 
 ## Technologies and concepts used
 
@@ -19,5 +19,5 @@ Application for tracking training habit in a visual manner.
 ## Android APK in relase 
 
 <p align="left">
-  <img width="100.978mm" height="100.003448mm" src="/HabitsTracker/Images/logo.svg">
+  <img width="100.978mm" height="100.003448mm" src="https://github.com/CristiSandu/HabitsTracker/blob/master/Images/logo.svg">
 </p>
