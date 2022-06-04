@@ -16,7 +16,7 @@ Application for tracking training habit in a visual manner.
     - Custom View for cells using **ContentView**
     - **Convertors** 
 
-## Android APK in relase 
+## Android APK's in [Releases](https://github.com/CristiSandu/HabitsTracker/releases)
 
 <p align="left">
   <img width="100.978mm" height="100.003448mm" src="https://github.com/CristiSandu/HabitsTracker/blob/master/Images/logo.svg">
