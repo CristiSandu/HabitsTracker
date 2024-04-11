@@ -2,24 +2,27 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HabitsTracker.Helpers
 {
     public static class Constants
     {
-        public static List<MonthModel> Months = Enumerable
-            .Range(1, 12)
-            .Select(i =>
-            new MonthModel
-            {
-                Name = DateTimeFormatInfo.CurrentInfo.GetMonthName(i),
-                Order = i - 1,
-                Days = PopulateListOfDaysInADay(DateTimeFormatInfo.CurrentInfo.GetMonthName(i), i)
-            }
-            ).ToList();
+        public static List<MonthModel> Months;
+
+        public static List<MonthModel> GetMonths()
+        {
+            Months ??= Enumerable
+                        .Range(1, 12)
+                        .Select(i =>
+                        new MonthModel
+                        {
+                            Name = DateTimeFormatInfo.CurrentInfo.GetMonthName(i),
+                            Order = i - 1,
+                            Days = PopulateListOfDaysInADay(DateTimeFormatInfo.CurrentInfo.GetMonthName(i), i)
+                        }).ToList();
+
+            return Months;
+        }
 
         public static List<DayModel> PopulateListOfDaysInADay(string monthName, int monthIndex)
         {

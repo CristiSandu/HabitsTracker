@@ -23,40 +23,40 @@ namespace HabitsTracker.ViewModels
         }
 
         [RelayCommand]
-        async Task SelectADay(DayModel day)
+        private void SelectADay(DayModel day)
         {
-            string currentMonth = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Now.Month).Substring(0, 3);
-            int currentDay = DateTime.Now.Day;
+            //string currentMonth = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Now.Month).Substring(0, 3);
+            //int currentDay = DateTime.Now.Day;
 
 
-            var monthIndex = months.FindIndex(x => x.Abbreviation == day.Month);
-            var dayIndex = months[monthIndex].Days.FindIndex(x => x.Day == day.Day);
+            var monthIndex = Months.FindIndex(x => x.Abbreviation == day.Month);
+            var dayIndex = Months[monthIndex].Days.FindIndex(x => x.Day == day.Day);
 
-            months[monthIndex].Days[dayIndex].IsSelected = !day.IsSelected;
+            Months[monthIndex].Days[dayIndex].IsSelected = !day.IsSelected;
 
             //await _localDataBase.UpdateDay(day);
         }
 
         [RelayCommand]
-        public async Task GetDays()
+        public void GetDays()
         {
             IsLoading = true;
-            List<MonthModel> month = Helpers.Constants.Months;
+            List<MonthModel> month = Helpers.Constants.GetMonths();
             List<DayModel> savedDays = new();
             //List<DayModel> savedDays = await _localDataBase.GetAllDaysSaved();
 
-            var result = savedDays.GroupBy(x => x.Month)
-                  .Select(y => new MonthModel
-                  {
-                      Name = y.Key,
-                      Days = y.ToList()
-                  }).ToList();
+            //var result = savedDays.GroupBy(x => x.Month)
+            //      .Select(y => new MonthModel
+            //      {
+            //          Name = y.Key,
+            //          Days = y.ToList()
+            //      }).ToList();
 
-            month.ForEach(m =>
-            {
-                var index = result.FindIndex(x => x.Name == m.Abbreviation);
-                m.Days = result[index].Days;
-            });
+            //month.ForEach(m =>
+            //{
+            //    var index = result.FindIndex(x => x.Name == m.Abbreviation);
+            //    m.Days = result[index].Days;
+            //});
 
 
             Months = new List<MonthModel>(month);
