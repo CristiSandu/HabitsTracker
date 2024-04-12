@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using HabitsTracker.Models;
 using HabitsTracker.Services;
-using System.Globalization;
 
 namespace HabitsTracker.ViewModels
 {

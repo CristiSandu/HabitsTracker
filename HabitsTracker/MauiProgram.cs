@@ -1,5 +1,6 @@
 ﻿using HabitsTracker.Services;
 using HabitsTracker.ViewModels;
+using HabitsTracker.Views;
 using Microsoft.Extensions.Logging;
 
 namespace HabitsTracker
@@ -18,12 +19,16 @@ namespace HabitsTracker
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<LocalDatabaseService>();
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainPageViewModel>();
+
+
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<HomePageViewModel>();
 
             return builder.Build();
         }

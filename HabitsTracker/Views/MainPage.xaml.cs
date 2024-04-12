@@ -1,6 +1,6 @@
 ﻿using HabitsTracker.ViewModels;
 
-namespace HabitsTracker
+namespace HabitsTracker.Views
 {
     public partial class MainPage : ContentPage
     {

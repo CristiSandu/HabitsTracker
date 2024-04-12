@@ -4,9 +4,8 @@
              x:Class="HabitsTracker.Controlers.CellDayView"
              x:Name="cellDay"
              xmlns:vm="clr-namespace:HabitsTracker.Controlers"
-             x:DataType="vm:CellDayView"
-             >
-    <Grid BackgroundColor="Transparent">
+             x:DataType="vm:CellDayView">
+    <Grid BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30">
         <Image Source="{Binding ImageName, Source={x:Reference cellDay}}"
                 BackgroundColor="Transparent"
                 HorizontalOptions="Center"
@@ -14,17 +13,17 @@
                 HeightRequest="28"
                 WidthRequest="28" />
 
-        <Label VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand"
-                FontAttributes="Bold"
-                TextColor="{StaticResource MainBrown}"
-                Padding="0"
-                Text="{Binding Text, Source={x:Reference cellDay}}"
-                FontSize="15" />
-
-        <Button Command="{Binding Command, Source={x:Reference cellDay}}"
-                CommandParameter="{Binding CommandParameter, Source={x:Reference cellDay}}"
-                BackgroundColor="Transparent" HeightRequest="30" />
+        <Label VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               FontAttributes="Bold"
+               TextColor="{StaticResource MainBrown}"
+               Padding="0"
+               Text="{Binding Text, Source={x:Reference cellDay}}"
+               FontSize="15" />
     </Grid>
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding Command, Source={x:Reference cellDay}}"
+                CommandParameter="{Binding CommandParameter, Source={x:Reference cellDay}}"/>
+    </ContentView.GestureRecognizers>
 </ContentView>
 
