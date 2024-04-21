@@ -1,11 +1,16 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Globalization;
+using AutoMapper;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using HabitsTracker.Domain;
+using HabitsTracker.Infrastructure;
 using HabitsTracker.Models;
 using HabitsTracker.Services;
+using MonthModel = HabitsTracker.Models.MonthModel;
 
 namespace HabitsTracker.ViewModels
 {
-    public partial class MainPageViewModel : BaseViewModel
+    public partial class MainPageViewModel : BaseViewModel, IQueryAttributable
     {
         [ObservableProperty]
         List<MonthModel> months = new();
@@ -13,54 +18,58 @@ namespace HabitsTracker.ViewModels
         [ObservableProperty]
         bool isLoading = false;
 
-        LocalDatabaseService _localDataBase;
+        [ObservableProperty]
+        int habitId;
 
-        public MainPageViewModel(LocalDatabaseService localDatabaseService)
+        private IDaysRepository _daysRepository;
+        private IMapper _mapper;
+
+        public MainPageViewModel(IDaysRepository daysRepository, IMapper mapper)
         {
-            _localDataBase = localDatabaseService;
-            GetDaysCommand.Execute(null);
+            _daysRepository = daysRepository;
+            _mapper = mapper;
         }
 
         [RelayCommand]
-        private void SelectADay(DayModel day)
+        private async void SelectADay(DayModel day)
         {
-            //string currentMonth = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Now.Month).Substring(0, 3);
-            //int currentDay = DateTime.Now.Day;
-
-
-            var monthIndex = Months.FindIndex(x => x.Abbreviation == day.Month);
-            var dayIndex = Months[monthIndex].Days.FindIndex(x => x.Day == day.Day);
+            var monthIndex = Months.FindIndex(x => x.MonthIndex == day.Value.Month);
+            var dayIndex = Months[monthIndex].Days.FindIndex(x => x.Value == day.Value);
 
             Months[monthIndex].Days[dayIndex].IsSelected = !day.IsSelected;
 
-            //await _localDataBase.UpdateDay(day);
+            var selectedDay = _mapper.Map<DayModel, MonthDay>(Months[monthIndex].Days[dayIndex]);
+
+            await _daysRepository.UpdateDayAsync(selectedDay.Id, selectedDay);
         }
 
         [RelayCommand]
-        public void GetDays()
+        public async void GetDays()
         {
             IsLoading = true;
-            List<MonthModel> month = Helpers.Constants.GetMonths();
-            List<DayModel> savedDays = new();
-            //List<DayModel> savedDays = await _localDataBase.GetAllDaysSaved();
 
-            //var result = savedDays.GroupBy(x => x.Month)
-            //      .Select(y => new MonthModel
-            //      {
-            //          Name = y.Key,
-            //          Days = y.ToList()
-            //      }).ToList();
+            List<MonthDay> month = await _daysRepository.GeAllDaysForHabitAsync(HabitId);
 
-            //month.ForEach(m =>
-            //{
-            //    var index = result.FindIndex(x => x.Name == m.Abbreviation);
-            //    m.Days = result[index].Days;
-            //});
+            var months = Enumerable
+                 .Range(1, 12)
+                 .Select(i =>
+                 new MonthModel
+                 {
+                     Name = DateTimeFormatInfo.CurrentInfo.GetMonthName(i),
+                     Order = i - 1,
+                     MonthIndex = i,
+                     Days = _mapper.Map<List<MonthDay>, List<DayModel>>(month.Where(d => d.Value.Month == i).OrderBy(d => d.Value).ToList())
+                 }).ToList();
 
+            Months = months;
 
-            Months = new List<MonthModel>(month);
             IsLoading = false;
         }
 
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            HabitId = (int)query["HabitId"];
+            GetDaysCommand.Execute(null);
+        }
     }
 }

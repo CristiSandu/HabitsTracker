@@ -1,4 +1,5 @@
-﻿using HabitsTracker.Services;
+﻿using HabitsTracker.Infrastructure;
+using HabitsTracker.Services;
 using HabitsTracker.ViewModels;
 using HabitsTracker.Views;
 using Microsoft.Extensions.Logging;
@@ -21,10 +22,19 @@ namespace HabitsTracker
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            builder.Services.AddSingleton<LocalDatabaseService>();
 
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddAutoMapper(options =>
+            {
+                options.AddProfile(new AutoMapperProfile());
+            });
+
+            builder.Services.AddDbContext<HabitsTrackerDbContext>();
+
+            builder.Services.AddScoped<IHabitsRepository, HabitsRepository>();
+            builder.Services.AddScoped<IDaysRepository, DaysRepository>();
+
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainPageViewModel>();
 
 
             builder.Services.AddSingleton<HomePage>();

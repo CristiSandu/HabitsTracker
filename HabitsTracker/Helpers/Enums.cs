@@ -1,6 +1,6 @@
 ﻿namespace HabitsTracker.Helpers
 {
-    public enum EnHabbitType
+    public enum EnHabitType
     {
         None = 1,
         Good = 2,
